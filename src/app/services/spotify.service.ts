@@ -12,9 +12,21 @@ export class SpotifyService {
   urlSpotify:string = 'https://api.spotify.com/v1/';
   
   //este token lo tengo q generar cada hora con el postman al ser una version gratuita (spotify api)
-  token:string = 'BQCVmi_Yxpz6Do06x9K173w_z7vnVupZcE9XO_h-8hDZfYR6TpWbPmi7R54VemIAS0AX7-LmAJ_uTphJddM';
+  token:string = 'BQAsa_uvBbotfDontY58Rpw-7S5aXlFmk4MNRsx4I32JyOs9-3xNE1maz9SCkx5nBvo-7KTCkClFGMvjZbY';
 
   constructor(public http:HttpClient) { }
+
+  getNewReleases() {
+    
+    let url = `${this.urlSpotify}browse/new-releases`;
+    let headers = this.getHeaders();
+
+    return this.http.get(url, {headers:headers} )
+            .pipe(map( data => {
+              return data['albums'].items;
+            } ));
+
+  }
 
   private getHeaders():HttpHeaders {
     let headers = new HttpHeaders({

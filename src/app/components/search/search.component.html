@@ -11,6 +11,8 @@
       <hr>
       <!-- *ngFor="let artista of _spotify.artistas" -->
 
+      <app-loading *ngIf="loading" ></app-loading>
+
       <div class="row">
         <div class="col-md-3 text-center puntero" *ngFor="let artista of _spotify.artistas" [routerLink]="['/artist', artista.id]">
           <!-- el signo de ? indica q es posible q no exista -->

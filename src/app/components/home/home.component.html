@@ -1,4 +1,6 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<!-- Esto es del primer curso, enseña como manejar algunos componentes, pero es mejor lo nuevo -->
+
+<!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -46,3 +48,28 @@
 </div>
 
 
+ -->
+
+<div *ngIf="error"  class="alert alert-danger animated fadeIn">
+  <h3> Error </h3>
+  <p>
+    {{mensajeError}}
+  </p>
+
+</div>
+
+<app-loading *ngIf="loading" ></app-loading>
+
+<div class="card-columns">
+  <div class="card" *ngFor="let cancion of nuevasCanciones" >
+    <img class="card-img-top" [src]="cancion.images[0].url" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{cancion.name}}
+      </h5>
+      <p class="card-text">
+        <span class="badge badge-pill badge-primary" *ngFor="let artista of cancion.artists" > {{artista.name}}</span>
+      </p>
+    </div>
+  </div>
+</div>
